@@ -1,7 +1,10 @@
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -27,12 +30,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-public class AppView {
+public class AppView extends JFrame {
 
-	private JFrame frame;
-	private JTable table;
-	private JTextField txtMaXe;
-	private JTextField textField_1;
+	public JFrame frame;
+	public JTable table;
+	public JTextField txtMaXe;
+	public JTextField textField_1;
 	
 	Calendar c = Calendar.getInstance();
     int year = c.get(Calendar.YEAR);
@@ -43,11 +46,11 @@ public class AppView {
     int second = c.get(Calendar.SECOND);
     int millis = c.get(Calendar.MILLISECOND);
     static int count = 1;
-    private JTable table_1;
-    private JTextField txtMXe;
-    private JTextField textField_2;
-    private JTextField txtNote;
-    private JTextField textField_3;
+    public JTable table_1;
+    public JTextField txtMXe;
+    public JTextField textField_2;
+    public JTextField txtNote;
+    public JTextField textField_3;
 	
 	/**
 	 * Launch the application.
@@ -75,7 +78,7 @@ public class AppView {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1080, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -52,6 +52,7 @@ public class DTBConn
 				  fina[1] = null;			  
 				  fina[2] = null;
 				  fina[3] = null;
+				  connection.close();
 			  } 
 		} catch (SQLException e) {	
 			e.printStackTrace();
@@ -100,5 +101,68 @@ public class DTBConn
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static boolean Login(String login, String password) 
+	{
+		String sql = "Select * From `baixe`.`TenBangLogin`  where use = "+ login +" and "+"Pass"+password+";";
+		try {
+			 Connection connection = getDTBConn();			  
+			  Statement statement = connection.createStatement(
+		      ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			  ResultSet rs = statement.executeQuery(sql);
+			  if(rs.next()){
+				 
+				  connection.close();
+				  return true;
+			    }
+			  else
+			  {
+				  connection.close();
+				  return false;
+			  } 
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+	
+	public static boolean Sigin(String login, String password) 
+	{
+		String sql = " INSERT INTO `baixe`.`TenBangLogin`  (idlogin, use, Pass)  VALUES ("+"'"+login+"'"+", "+"'"+password+"'"+" );";
+		
+		try {
+				Connection connection = getDTBConn();			 
+				Statement statement = connection.createStatement();
+				statement.executeUpdate(sql);
+			    connection.close();
+			    return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public static boolean Usecheck(String login) 
+	{
+		String sql = "Select * From `baixe`.`TenBangLogin`  where use = "+ login +" ;";
+		try {
+			 Connection connection = getDTBConn();			  
+			  Statement statement = connection.createStatement(
+		      ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			  ResultSet rs = statement.executeQuery(sql);
+			  if(rs.next()){
+				 
+				  connection.close();
+				  return true;
+			    }
+			  else
+			  {
+				  connection.close();
+				  return false;
+			  } 
+		} catch (Exception e) {
+			return false;
+		}
+		
 	}
 }	
